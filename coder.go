@@ -47,6 +47,7 @@ func (c *Coder) Decode(raw []byte, response interface{}) (err error) {
 
 	respEnvelope := new(SOAPEnvelope)
 	respEnvelope.Body = SOAPBody{Content: response}
+
 	err = xml.Unmarshal(raw, respEnvelope)
 	if err != nil {
 		return fmt.Errorf("soapy: unmarshal error %v", err)
@@ -56,5 +57,6 @@ func (c *Coder) Decode(raw []byte, response interface{}) (err error) {
 	if fault != nil {
 		return fault
 	}
+
 	return nil
 }

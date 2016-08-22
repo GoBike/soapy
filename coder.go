@@ -55,7 +55,7 @@ func (c *Coder) Decode(raw []byte, response interface{}) (err error) {
 
 	fault := respEnvelope.Body.Fault
 	if fault != nil {
-		return fault
+		return fmt.Errorf("soapy: fault returned %v", fault)
 	}
 
 	return nil

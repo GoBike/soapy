@@ -7,10 +7,16 @@ import (
 	"fmt"
 )
 
-// Coder wraps header and auth, provides methods to encode/decode soap-envolope.
+// Coder wraps header, provides methods to encode/decode soap-envolope.
 type Coder struct {
 	header interface{}
-	auth   *BasicAuth
+}
+
+// NewCoder instantiate Coder instance.
+func NewCoder(header interface{}) *Coder {
+	return &Coder{
+		header: header,
+	}
 }
 
 // Encode encodes request to a readily bytes reader, which can be assigned to
